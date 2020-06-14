@@ -125,7 +125,7 @@ Flag：`AIS3{Ar3_y0u_r34l1y_r34dy_t0_sumnn0n_4_D3m0n?}`
 
 比方說下面這張空的QR Code
 
-![Blank](🌱 Soy/Blank.png)
+![Blank](assets/Blank QR.png)
 
 紅色的是固定的定位標記，藍色的是[Format Info](https://zh.wikipedia.org/wiki/QR%E7%A2%BC#%E7%BB%93%E6%9E%84)
 
@@ -212,6 +212,10 @@ Flag：`AIS3{A1r1ght_U_4r3_my_3n3nnies}`
 ![Problem](🎹 Fallen Beat/Problem.png)
 
 這題其實是我解出來的第一題，
+
+也是少數幾題我沒看其他Write Up，100%自己解出來的題目
+
+學了這麼多OOP總算有點屁用了xDDDD
 
 老實說我也不知道腦子哪裡撞到了，第一題居然挑這麼認真的題目
 
