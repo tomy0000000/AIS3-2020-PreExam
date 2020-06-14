@@ -46,7 +46,7 @@ For English version, see [README](./README.md)
 
 ### 💤 Piquero
 
-![Piquero](./💤 Piquero/Piquero_99c9aa83fe492df8d52229017d4dca92297c9aeb.jpg)
+![Piquero](💤 Piquero/Piquero_99c9aa83fe492df8d52229017d4dca92297c9aeb.jpg)
 
 如果你搭電梯真的很無聊，你對這題一定特別有想法 (X
 
@@ -66,7 +66,7 @@ Flag：`AIS3{I_feel_sleepy_Good_Night!!!}`
 
 ### 🐥 Karuego
 
-![Karuego](./🐥 Karuego/Karuego_0d9f4a9262326e0150272debfd4418aaa600ffe4.png)
+![Karuego](🐥 Karuego/Karuego_0d9f4a9262326e0150272debfd4418aaa600ffe4.png)
 
 這個是一張png的圖片，flag就藏在這個裡面
 
@@ -119,13 +119,13 @@ Flag：`AIS3{Ar3_y0u_r34l1y_r34dy_t0_sumnn0n_4_D3m0n?}`
 
 ### 🌱 Soy
 
-![Soy](./🌱 Soy/Soy_b692c44dd2a32b30eee8a9315091d79f7dd8c8a8.png)
+![Soy](🌱 Soy/Soy_b692c44dd2a32b30eee8a9315091d79f7dd8c8a8.png)
 
 修復QR Code，對QR Code有一些基礎的了解是很有幫助的
 
 比方說下面這張空的QR Code
 
-![Blank](./🌱 Soy/Blank.png)
+![Blank](🌱 Soy/Blank.png)
 
 紅色的是固定的定位標記，藍色的是[Format Info](https://zh.wikipedia.org/wiki/QR%E7%A2%BC#%E7%BB%93%E6%9E%84)
 
@@ -135,13 +135,13 @@ Flag：`AIS3{Ar3_y0u_r34l1y_r34dy_t0_sumnn0n_4_D3m0n?}`
 
 接下來把題目剩下的格子一個一個填進去，解到一定的程度之後就可以掃的出來了
 
-![Decrypted](./🌱 Soy/Decrypted.png)
+![Decrypted](🌱 Soy/Decrypted.png)
 
 Flag：`AIS3{H0w_c4n_y0u_f1nd_me?!?!?!!}`
 
 ### 👑 Saburo
 
-![](./👑 Saburo/Problem.png)
+![Problem](👑 Saburo/Problem.png)
 
 這題一開始我本來也是沒什麼想法
 
@@ -179,7 +179,7 @@ print(s.recv(1024).strip().decode())
 
 於是絕望之際，我有一個大膽的想法
 
-![Keyboard Maestro](./👑 Saburo/Keyboard Maestro.png)
+![Keyboard Maestro](👑 Saburo/Keyboard Maestro.png)
 
 如果沒用過的，這個叫按鍵精靈
 
@@ -187,5 +187,111 @@ print(s.recv(1024).strip().decode())
 
 我是用Mac的Keyboard Maestro，但我相信其他按鍵精靈也可以輕鬆達到類似的效果
 
+[![terminal_demo](👑 Saburo/terminal_demo.gif)](https://asciinema.org/a/339381)
+
+這一次的Iteration答案是`i`哦，你猜對了嗎：）
+
+我也沒有，這是示範的所以我把次數調到只有3次
+
+根據出題TA的說法，每解一個字就約有 5ms 的浮動範圍，後期浮動疊加起來會抖很大
+
+所以到最後面接近結尾的時候
+
+幾乎要測到10次以上取平均才比較有機會觀察到差異
+
+或是呢 發揮一點你的小創意
+
+You are my Enem... ENEMIES
+
 Flag：`AIS3{A1r1ght_U_4r3_my_3n3nnies}`
 
+## ♻️ Reverse
+
+### 🎹 Fallen Beat
+
+![Problem](🎹 Fallen Beat/Problem.png)
+
+這題其實是我解出來的第一題，
+
+老實說我也不知道腦子哪裡撞到了，第一題居然挑這麼認真的題目
+
+載下來很快就發現，啊 原來是音game
+
+只要打出Full Combo就可以得到flag了是吧
+
+![Full Combo](🎹 Fallen Beat/Full Combo.png)
+
+呵呵，呵呵呵
+
+題目分類都叫Reverse了，~~臭肥宅還想來硬的啊~~
+
+還是先把jar重新decompile吧
+
+其實我也不知道正規的decompile作法是什麼
+
+但是隨便Google就有一大堆可以線上decompile的工具了
+
+首先解完之後會有很多的java檔
+
+針對整個source code全域搜索`flag`會找到`Visual/PanelEnding.java`裡的method`setValue`裡有這段
+
+```java
+if (t == mc) {
+    for (int i = 0; i < cache.size(); ++i) {
+        final byte[] flag = this.flag;
+        final int n = i % this.flag.length;
+        flag[n] ^= (byte)(Object)cache.get(i);
+    }
+    final String fff = new String(this.flag);
+    this.text[0].setText(String.format("Flag: %s", fff));
+}
+```
+
+可以看到flag並沒有被明文儲存，而是透過其中一個class attributes`flag`
+
+和傳進來的cache做xor，所以還要再往上追傳進來的cache是什麼
+
+於是再用`SetValue`做一次全域搜索，可以看到`SetValue`只會在`Control/GameControl.java`裡被呼叫
+
+打開這份java檔，可以呼叫`SetValue`中`cache`的參數是把`this.cache`傳下去
+
+往上找可以看到`this.cache`是在這個Class的Constructor中宣告的
+
+```java
+// Other Codes
+final FileReader fr = new FileReader(fumenPath);
+final BufferedReader br = new BufferedReader(fr);
+// Other Codes
+this.cache = new ArrayList<Integer>();
+// Other Codes
+while (br.ready()) {
+    final String s = br.readLine();
+    if (s.charAt(0) != '*') {
+        // Other Codes
+        this.cache.add(a);
+        // Other Codes
+    }
+}
+```
+
+但是這裡的`fumenPath`也是在class的宣告時傳進來的
+
+於是再用`GameControl`做第三次的全域搜索
+
+就會發現`GameControl`只會在`Control/Frame.java`中宣告
+
+於是我們終於找到`fumenPath`是的值是`songs/gekkou/hell.txt`
+
+重新把code打包成`Exploit.java`
+
+然後把原本解壓縮目錄裡的`songs/gekkou/hell.txt`移到這個java檔的同一個目錄底下執行就可以得到flag了
+
+特別小心原本GameControl裡是用br來讀cache的，可是在讀cache之前有多一行
+
+```java
+this.bpm = Integer.parseInt(br.readLine());
+```
+
+所以這一行也必須加進`Expolit.java`裡，不然轉換會出錯
+
+Flag：`AIS3{Wow_how_m4ny_h4nds_do_you_h4ve}`
