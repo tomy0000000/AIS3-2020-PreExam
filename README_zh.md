@@ -301,3 +301,48 @@ this.bpm = Integer.parseInt(br.readLine());
 所以這一行也必須加進`Expolit.java`裡，不然轉換會出錯
 
 Flag：`AIS3{Wow_how_m4ny_h4nds_do_you_h4ve}`
+
+## 🙊 Crypto
+
+### 🦕 Brontosaurus
+
+![Problem](🦕%20Brontosaurus/Problem.png)
+
+從題目的說明可以看到
+
+~~這題是考古題，所以立馬打開Google搜尋`AIS3 2019 Pre Exam Write Up`~~
+
+最後一個關鍵字`KcufsJ`，反過來變成`JsfucK` (其實如果直接把`KcufsJ`拿去google也可以發現)
+
+這是一種特殊的JavaScript，可以在Google上隨便找一個解碼器
+
+然後把題目的文字檔塞進去，發現不能解
+
+因為題目有提示過，得要先反轉一次才能解碼
+
+Flag：`AIS3{Br0n7Os4uru5_ch3at_3asi1Y}`
+
+### 🦖 T-Rex
+
+![Problem](🦖%20T-Rex/Problem.png)
+
+這題的關鍵字在`nihilist`，
+
+a.k.a. 虛無主義者，其實跟解題一點關係都沒有
+
+但是nihilist cipher有，至於我是怎麼知道的
+
+就...Google關鍵字`nihilist CTF`或`nihilist encoding`
+
+nihilist cipher由兩個關鍵部件組成，一個是加密盤，一個是密文
+
+由密文一個一個對應加密盤解碼，就可以回推出解密的Flag
+
+雖然網路上好像有不少現成的工具，但我找不太到適合的
+
+所以自己用Python寫了一個，有興趣的可以看看[`T-Rex.py`](🦖%20T-Rex/T-Rex.py)
+
+Flag：`AIS3{TYR4NN0S4URU5_R3X_GIV3_Y0U_SOMETHING_RANDOM_5TD6XQIVN3H7EUF8ODET4T3H907HUC69L6LTSH4KN3EURN49BIOUY6HBFCVJRZP0O83FWM0Z59IISJ5A2VFQG1QJ0LECYLA0A1UYIHTIIT1IWH0JX4T3ZJ1KSBRM9GED63CJVBQHQORVEJZELUJW5UG78B9PP1SIRM1IF500H52USDPIVRK7VGZULBO3RRE1OLNGNALX}`
+
+Flag：`AIS3{TYR4NN0S4URU5_R3X_GIV3_Y0U_SOMETHING_RANDOM_5TD6XQIVN3H7EUF8ODET4T3H907HUC69L6LTSH4KN3EURN49BIOUY6HBFCVJRZP0O83FWM0Z59IISJ5A2VFQG1QJ0LECYLA0A1UYIHTIIT1IWH0JX4T3ZJ1KSBRM9GED63CJVBQHQORVEJZELUJW5UG78B9PP1SIRM1IF500H52USDPIVRK7VGZULBO3RRE1OLNGNALX}`
+
