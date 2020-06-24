@@ -344,5 +344,148 @@ nihilist cipher由兩個關鍵部件組成，一個是加密盤，一個是密�
 
 Flag：`AIS3{TYR4NN0S4URU5_R3X_GIV3_Y0U_SOMETHING_RANDOM_5TD6XQIVN3H7EUF8ODET4T3H907HUC69L6LTSH4KN3EURN49BIOUY6HBFCVJRZP0O83FWM0Z59IISJ5A2VFQG1QJ0LECYLA0A1UYIHTIIT1IWH0JX4T3ZJ1KSBRM9GED63CJVBQHQORVEJZELUJW5UG78B9PP1SIRM1IF500H52USDPIVRK7VGZULBO3RRE1OLNGNALX}`
 
-Flag：`AIS3{TYR4NN0S4URU5_R3X_GIV3_Y0U_SOMETHING_RANDOM_5TD6XQIVN3H7EUF8ODET4T3H907HUC69L6LTSH4KN3EURN49BIOUY6HBFCVJRZP0O83FWM0Z59IISJ5A2VFQG1QJ0LECYLA0A1UYIHTIIT1IWH0JX4T3ZJ1KSBRM9GED63CJVBQHQORVEJZELUJW5UG78B9PP1SIRM1IF500H52USDPIVRK7VGZULBO3RRE1OLNGNALX}`
+## 🌐 Web
 
+### 🦈 Shark
+
+![problem](./🦈%20Shark/Problem.png)
+
+從題目的描述，我猜這題應該是某一年考古題的進化版
+
+但難得這題我的解題靈感並不是來自前幾年的Writeup
+
+首先來看主頁
+
+![home](🦈%20Shark/home.png)
+
+原始碼也沒什麼特別的，點進連結看看
+
+![hint.txt](🦈%20Shark/hint.txt.png)
+
+提示說flag並不在執行server的這台主機上，而是在同一個區域網路下的另一台web伺服器伺服器上
+
+再觀察網址的部分可以猜`path`後面帶的參數可以用來檢視主機上的檔案
+
+我有點忘記當時是看哪個writeup或教學了
+
+但總之就是，Unix系統經常在`/proc/net/fib_trie`中存入區域網路相關的資訊
+
+所以先試試
+
+https://shark.ais3.org/?path=/proc/net/fib_trie
+
+可是會被拒絕存取，換別的看看
+
+https://shark.ais3.org/?path=index.php
+
+![index.php](🦈%20Shark/index.php.png)
+
+這裡可以發現這一段php會用regular expression阻擋絕對路徑和使用`..`作為路徑開頭的檔案
+
+這時候就要引入另一個php的弱點了：[php://](https://www.php.net/manual/en/wrappers.php.php)
+
+`php://`是一個php自訂的protocal，可以用來處理data streme
+
+比方說範例中的
+
+```php
+readfile("php://filter/resource=http://www.example.com");
+```
+
+可以載入http://www.example.com的資料
+
+所以我們把原本的
+
+https://shark.ais3.org/?path=/proc/net/fib_trie
+
+改成
+
+https://shark.ais3.org/?path=php://filter/resource=/proc/net/fib_trie
+
+![/proc/net/fib_trie](🦈%20Shark/:proc:net:fib_trie.png)
+
+嗒噠！！
+
+接下來就是分析這份檔案裡的網址，
+
+詳細的作法google一下就很多了
+
+但我在解題的時候整個看下來
+
+撇掉`0.0.0.0`是unicast
+
+還有`127.0.0.0`應該是跟localhost有關的
+
+只有172開頭的看起來像是router分配的區域網路IP
+
+所以照著一開始提示，試試看
+
+https://shark.ais3.org/?path=php://filter/resource=http://172.22.0.1/flag
+
+沒有：（
+
+再試試
+
+https://shark.ais3.org/?path=php://filter/resource=http://172.22.0.2/flag
+
+BINGO🎉
+
+Flag：`AIS3{5h4rk5_d0n'7_5w1m_b4ckw4rd5}`
+
+### 🐘 Elephant
+
+![Problem](🐘%20Elephant/Problem.png)
+
+先看看連結
+
+![home](🐘%20Elephant/home.png)
+
+不知道這是什麼
+
+隨便打個名字submit看看
+
+![login](🐘%20Elephant/login.png)
+
+岔題一下，題目有提到網頁中有提示，可是discord上很多人都找不到
+
+這我就不懂了，就算你連開發者工具都不會用，在網頁上亂拉亂點或全選總不是什麼困難的事吧 (?
+
+![hint](🐘%20Elephant/hint.png)
+
+其實老實說我到結束都沒有找到看source code的方法，
+
+但還是解出來了，但應該還是算預期解啦 (我猜)
+
+OK扯遠了，回頭看看網頁的文字
+
+> Hello, Tomy! Your token is not sufficient to read the flag! 
+
+看到這裡的關鍵字token，我大膽猜測，前一個網頁是一個登入的介面
+
+根據輸入的使用者姓名來決定要不要給flag
+
+那登入完之後通常會帶上cookie，那就來檢查一下
+
+![cookie](🐘%20Elephant/cookie.png)
+
+php的cookie通常是base64 encode，先解回來
+
+```
+O:4:"User":2:{s:4:"name";s:4:"Tomy";s:11:"?User?token";s:32:"8bd5e99e146d0af7cc75e8f2bcc9693e";}
+```
+
+接下來，按照這份Cheatsheet: [w181496 / Web-CTF-Cheatsheet](https://github.com/w181496/Web-CTF-Cheatsheet#php---serialize--unserialize) 的提示
+
+再加上已知php的字串==布林值true
+
+可以修改一下這個cookie
+
+```
+O:4:"User":2:{s:4:"name";s:4:"Tomy";s:11:"?User?token";b:1;}
+```
+
+用base64 encode回去，再填回瀏覽器裡
+
+![flag](🐘%20Elephant/flag.png)
+
+Flag：`AIS3{0nly_3l3ph4n75_5h0uld_0wn_1v0ry}`
