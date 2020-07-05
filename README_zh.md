@@ -285,7 +285,7 @@ if (t == mc) {
 
 於是再用`SetValue`做一次全域搜索，可以看到`SetValue`只會在`Control/GameControl.java`裡被呼叫
 
-打開這份java檔，可以呼叫`SetValue`中`cache`的參數是把`this.cache`傳下去
+打開這份java檔，呼叫`SetValue`中`cache`的參數是把`this.cache`傳下去
 
 往上找可以看到`this.cache`是在這個Class的Constructor中宣告的
 
@@ -410,7 +410,7 @@ https://shark.ais3.org/?path=index.php
 
 這時候就要引入另一個php的弱點了：[php://](https://www.php.net/manual/en/wrappers.php.php)
 
-`php://`是一個php自訂的protocal，可以用來處理data streme
+`php://`是一個php自訂的protocal，可以用來處理data stream
 
 比方說範例中的
 
